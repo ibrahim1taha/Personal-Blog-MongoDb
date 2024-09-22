@@ -1,0 +1,34 @@
+doctype html
+html(lang="en")
+  head
+    meta(charset="UTF-8")
+    meta(name="viewport" content="width=device-width, initial-scale=1.0")
+    title Admin Dashboard
+    link(rel="stylesheet", href="/style.css")
+
+  body
+    nav
+      .container
+        h1 
+          a(href="/") Ibrahim's Blog
+        ul
+          li 
+            a(href="#") home
+          li 
+            a(href="add-blog") Add Blog
+          li 
+            a(href="admin-dashboard") Dashboard 
+
+    main
+      .container
+        h2 Manage Articles
+        button.btn(onclick=`location.href='/admin/add-blog'`) Add New Article
+        .article-list
+          each blog in blogs
+            .article-item
+              span= blog.title
+              .actions
+                button.btn(onclick=`location.href='/admin/edit-blog?id=${blog._id}'`) Edit
+                form(action="/admin/delete-blog", method="POST", style="display:inline")
+                  input(type="hidden", name="blogId", value=blog._id)
+                  button.btn-delete(type="submit") Delete

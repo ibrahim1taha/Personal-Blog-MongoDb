@@ -1,0 +1,35 @@
+doctype html
+html(lang="en")
+  head
+    meta(charset="UTF-8")
+    meta(name="viewport" content="width=device-width, initial-scale=1.0")
+    title Add New Article
+    link(rel="stylesheet", href="/style.css")
+
+  body
+    nav
+      .container
+        h1 
+          a(href="/") Ibrahim's Blog
+        ul
+          li 
+            a(href="/") home
+          li 
+            a(href="add-blog") Add Blog
+          li 
+            a(href="admin-dashboard") Dashboard 
+
+    main
+      .container
+        form(action="/admin/add-blog", method="POST")
+          label(for="title") Title
+          input(type="text", id="title", name="title", placeholder="Article Title")
+
+          label(for="imageUrl") ImageURL
+          input(type="text", id="imageUrl", name="imageUrl", placeholder="Enter image URL")
+		  
+          label(for="content") Content
+          textarea(id="content", name="content", rows = 12 , placeholder="Write your article here...")
+
+
+          button.btn(type="submit") Publish
