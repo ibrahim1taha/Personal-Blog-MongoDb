@@ -1,0 +1,31 @@
+doctype html
+html(lang="en")
+  head
+    meta(charset="UTF-8")
+    meta(name="viewport" content="width=device-width, initial-scale=1.0")
+    title Medium-Like Blog - Home
+    link(rel="stylesheet", href="style.css")
+
+  body
+    nav
+      .container
+        h1 
+          a(href="/") Ibrahim's Blog
+        ul
+          li 
+            a(href="#") home
+          li 
+            a(href="admin/add-blog") Add Blog
+          li 
+            a(href="admin/admin-dashboard") Dashboard 
+
+    main
+  .container
+    h2 Latest Articles
+    each blg in blogs
+      .article-card
+        h3 
+          a(href=`/article?id=${blg.id}`) #{blg.title}
+        p Published on: #{blg.date}
+        p.excerpt #{blg.description.substring(0 , 120)}
+

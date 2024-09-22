@@ -1,0 +1,27 @@
+doctype html
+html(lang="en")
+  head
+    meta(charset="UTF-8")
+    meta(name="viewport" content="width=device-width, initial-scale=1.0")
+    title #{blog.title}
+    link(rel="stylesheet", href="style.css")
+
+  body
+    nav
+      .container
+        h1 
+          a(href="/") Ibrahim's Blog
+        ul
+          li 
+            a(href="#") home
+          li 
+            a(href="admin/add-blog") Add Blog
+          li 
+            a(href="admin/admin-dashboard") Dashboard 
+
+    article.article-page
+      .container
+        h1 #{blog.title}
+        img(src=blog.imageUrl, alt="Article Image", class="article-image")
+        p.meta Published on: #{blog.date}
+        p.content #{blog.description}
