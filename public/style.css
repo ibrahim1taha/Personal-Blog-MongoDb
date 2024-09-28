@@ -183,3 +183,20 @@ form button {
 .article-page .content {
 	margin-bottom: 20px;
 }
+
+.user-message {
+	margin: auto;
+	margin-top: 24px;
+	width: 35%;
+	border: 1px solid #4771fa;
+	padding: 0.5rem;
+	border-radius: 3px;
+	background: #b9c9ff;
+	text-align: center;
+}
+
+.user-message--error {
+	border-color: red;
+	background: rgb(255, 176, 176);
+	color: red;
+}

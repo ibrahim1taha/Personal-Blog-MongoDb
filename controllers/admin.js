@@ -5,8 +5,7 @@ exports.addBlog = (req, res) => {
 	const content = req.body.content;
 	const date = req.body.date;
 	const imageUrl = req.body.imageUrl;
-	console.log(req.body);
-	const blog = new Blogs({ title: title, imageUrl: imageUrl, description: content, date: Date.now() });
+	const blog = new Blogs({ title: title, imageUrl: imageUrl, description: content, date: Date.now(), userId: req.user._id });
 	blog.save().then(() => {
 		res.redirect('/');
 	}).catch((err) => {

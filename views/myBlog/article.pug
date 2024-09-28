@@ -26,7 +26,9 @@ html(lang="en")
     article.article-page
       .container
         h1 #{blog.title}
+        .author-info
+          img(src=imgUrl, alt="Author Image", class="author-image")
+          span #{blog.userId.userName}
         img(src=blog.imageUrl, alt="Article Image", class="article-image")
-        img(src=blog.authorImage, alt="Author Image", class="author-image") // New line
-        p Published by: #{blog.author} | Published on: #{blog.date}
+        p Published on: #{blog.date}
         p.content #{blog.description}

@@ -23,12 +23,18 @@ html(lang="en")
           li 
             a(href="/login") Login 
 
+    if errorMessage
+      .user-message.user-message--error= errorMessage
+
     main
       .authContainer
         h2 Sign Up
         form(action="/signup", method="POST")
           label(for="username") Username
           input(type="text", id="username", name="userName", placeholder="Enter your username" required)
+
+          label(for="imgUrl") Add Image
+          input(type="text", id="imgUrl", name="imgUrl", placeholder="Enter your image link" required)
 
           label(for="email") Email
           input(type="email", id="email", name="email", placeholder="Enter your email" required)

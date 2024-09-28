@@ -13,24 +13,27 @@ html(lang="en")
           a(href="/") Ibrahim's Blog
         ul
           li 
-            a(href="#") home
+            a(href="#") Home
           li 
-            a(href="admin/add-blog") Add Blog
+            a(href="/admin/add-blog") Add Blog
           li 
-            a(href="admin/admin-dashboard") Dashboard 
+            a(href="/admin/admin-dashboard") Dashboard 
           li 
             a(href="/signup") Sign Up
           li 
             a(href="/login") Login 
 
+    if errorMessage
+      .user-message.user-message--error= errorMessage
+	  
     main
       .authContainer
         h2 Login
         form(action="/login", method="POST")
           label(for="email") Email
-          input(type="email", id="email", name="email", placeholder="Enter your email" required)
+          input(type="email", id="email", name="email", placeholder="Enter your email", required)
 
           label(for="password") Password
-          input(type="password", id="password", name="password", placeholder="Enter your password" required)
+          input(type="password", id="password", name="password", placeholder="Enter your password", required)
 
           button.btn(type="submit") Login
