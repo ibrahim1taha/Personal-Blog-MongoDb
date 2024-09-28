@@ -12,6 +12,11 @@ body {
 	margin: auto;
 }
 
+.authContainer {
+	width: 40%;
+	margin: auto;
+}
+
 /* Navigation Bar */
 nav {
 	background-color: #fff;
@@ -84,6 +89,24 @@ p {
 	flex: 1;
 }
 
+/* Author Image */
+.author-info {
+	display: flex;
+	/* Use flexbox for inline alignment */
+	align-items: center;
+	/* Aligns items vertically */
+}
+
+.author-image {
+	width: 30px;
+	/* Set a suitable size for the image */
+	height: 30px;
+	/* Set a suitable size for the image */
+	border-radius: 50%;
+	margin-right: 8px;
+	/* Space between the image and the text */
+}
+
 /* Forms */
 form label {
 	display: block;
@@ -119,6 +142,7 @@ form button {
 	color: white;
 	border: none;
 	border-radius: 5px;
+	height: 44px;
 	padding: 8px 20px;
 	font-weight: bold;
 	text-transform: uppercase;

@@ -29,7 +29,6 @@ html(lang="en")
           input(type="text", id="imageUrl", name="imageUrl", placeholder="Enter image URL", value=blog.imageUrl)
 		  
           label(for="content") Content
-          textarea(id="content", name="content", rows = 12 ,  placeholder="Write your article here...")=blog.description
-
+          textarea(id="content", name="content", rows=12, placeholder="Write your article here...")= blog.description
 
           button.btn(type="submit") Edit

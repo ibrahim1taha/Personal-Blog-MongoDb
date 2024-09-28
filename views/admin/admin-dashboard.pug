@@ -2,7 +2,7 @@ doctype html
 html(lang="en")
   head
     meta(charset="UTF-8")
-    meta(name="viewport" content="width=device-width, initial-scale=1.0")
+    meta(name="viewport", content="width=device-width, initial-scale=1.0")
     title Admin Dashboard
     link(rel="stylesheet", href="/style.css")
 
@@ -18,6 +18,10 @@ html(lang="en")
             a(href="add-blog") Add Blog
           li 
             a(href="admin-dashboard") Dashboard 
+          li 
+            a(href="auth/signup") Sign Up
+          li 
+            a(href="auth/login") Login 
 
     main
       .container
@@ -26,7 +30,10 @@ html(lang="en")
         .article-list
           each blog in blogs
             .article-item
-              span= blog.title
+              h3 
+                a(href=`/article?id=${blog._id}`) #{blog.title}
+              img(src=blog.authorImage, alt="Author Image", class="author-image") // New line
+              p Published by: #{blog.author} | Published on: #{blog.date}
               .actions
                 button.btn(onclick=`location.href='/admin/edit-blog?id=${blog._id}'`) Edit
                 form(action="/admin/delete-blog", method="POST", style="display:inline")

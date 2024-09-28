@@ -17,6 +17,11 @@ const blogSchema = mongoose.Schema({
 	description: {
 		type: String,
 		required: true
+	},
+	userId: {
+		type: String,
+		ref: 'Users',
+		required: true
 	}
 })
 

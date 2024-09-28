@@ -2,7 +2,7 @@ doctype html
 html(lang="en")
   head
     meta(charset="UTF-8")
-    meta(name="viewport" content="width=device-width, initial-scale=1.0")
+    meta(name="viewport", content="width=device-width, initial-scale=1.0")
     title Medium-Like Blog - Home
     link(rel="stylesheet", href="style.css")
 
@@ -18,14 +18,23 @@ html(lang="en")
             a(href="admin/add-blog") Add Blog
           li 
             a(href="admin/admin-dashboard") Dashboard 
+          li 
+            a(href="/signup") Sign Up
+          li 
+            a(href="/login") Login 
 
     main
-  .container
-    h2 Latest Articles
-    each blg in blogs
-      .article-card
-        h3 
-          a(href=`/article?id=${blg.id}`) #{blg.title}
-        p Published on: #{blg.date}
-        p.excerpt #{blg.description.substring(0 , 120)}
+      .container
+        h2 Latest Articles
+        each blg in blogs
+          .article-card
+            h3 
+              a(href=`/article?id=${blg._id}`) #{blg.title}
 
+            // Create a container for the author info
+            .author-info
+              img(src=authorImage, alt="Author Image", class="author-image")
+              span #{author}
+
+            p Published on: #{blg.date}
+            p.excerpt #{blg.description.substring(0, 120)}

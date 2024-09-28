@@ -12,8 +12,10 @@ app.use(bodyParser.urlencoded({ extended: false }));
 
 const myBlogRoutes = require('./routes/myBlog');
 const adminRoutes = require('./routes/admin');
+const authRoutes = require('./routes/auth');
 
 app.use('/', myBlogRoutes);
+app.use('/', authRoutes);
 app.use('/admin', adminRoutes);
 
 mongoose.connect('mongodb+srv://ibrahim_mohamed:62jrOx1zjhKamDwF@project0.4ly2y.mongodb.net/Blogs').then((result) => {

@@ -1,0 +1,39 @@
+doctype html
+html(lang="en")
+  head
+    meta(charset="UTF-8")
+    meta(name="viewport", content="width=device-width, initial-scale=1.0")
+    title Sign Up
+    link(rel="stylesheet", href="/style.css")
+
+  body
+    nav
+      .container
+        h1 
+          a(href="/") Ibrahim's Blog
+        ul
+          li 
+            a(href="#") home
+          li 
+            a(href="admin/add-blog") Add Blog
+          li 
+            a(href="admin/admin-dashboard") Dashboard 
+          li 
+            a(href="/signup") Sign Up
+          li 
+            a(href="/login") Login 
+
+    main
+      .authContainer
+        h2 Sign Up
+        form(action="/signup", method="POST")
+          label(for="username") Username
+          input(type="text", id="username", name="userName", placeholder="Enter your username" required)
+
+          label(for="email") Email
+          input(type="email", id="email", name="email", placeholder="Enter your email" required)
+
+          label(for="password") Password
+          input(type="password", id="password", name="password", placeholder="Enter your password" required)
+
+          button.btn(type="submit") Sign Up
