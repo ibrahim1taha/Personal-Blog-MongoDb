@@ -26,9 +26,9 @@ app.use(
 	session({
 		secret: 'key secret',
 		cookie: { maxAge: 1000 * 60 * 60 * 24 }, // 1 day 
-		store: store,
 		resave: false,
 		saveUninitialized: false,
+		store: store
 	})
 );
 

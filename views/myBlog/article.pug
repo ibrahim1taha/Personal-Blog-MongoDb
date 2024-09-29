@@ -35,15 +35,15 @@ html(lang="en")
             // Display user name and image when authenticated
             li
               a(href="/")
-                img.nav-user-image(src=imgUrl, alt="User Image") 
-                span.nav-user-name= author
+                img.nav-user-image(src=user.imgUrl, alt="User Image") 
+                span.nav-user-name= user.userName
 
     article.article-page
       .container
         h1 #{ blog.title }
         .author-info
-          img.author-image(src=imgUrl, alt="Author Image")
-          span #{ author }
+          img.author-image(src=blog.userId.imgUrl, alt="Author Image")
+          span #{ blog.userId.userName }
         img.article-image(src=blog.imageUrl, alt="Article Image")
         p Published on: #{ blog.date }
         p.content #{ blog.description }

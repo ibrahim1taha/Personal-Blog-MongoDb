@@ -75,7 +75,10 @@ exports.postLogin = (req, res) => {
 
 exports.postLogout = (req, res) => {
 	req.session.destroy(err => {
-		console.log(err);
+		if (err) {
+			console.error('Session destruction error:', err);
+			return res.status(500).send('Could not log out');
+		}
 		res.redirect('/');
 	});
-}
+};

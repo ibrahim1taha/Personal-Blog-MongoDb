@@ -7,7 +7,7 @@ exports.getBlogs = (req, res, next) => {
 		errorMsg = null;
 
 	Blogs.find().populate('userId').then((blogs) => {
-		console.log(blogs);
+		// console.log(blogs);
 		res.render('myBlog/home', {
 			blogs: blogs,
 			errorMessage: errorMsg,
@@ -27,8 +27,7 @@ exports.getArticle = (req, res) => {
 			}
 			res.render('myBlog/article', {
 				blog: blog[0],
-				imgUrl: blog[0].userId.imgUrl,
-				author: blog[0].userId.userName
+				user: req.user
 			});
 		})
 		.catch((err) => {

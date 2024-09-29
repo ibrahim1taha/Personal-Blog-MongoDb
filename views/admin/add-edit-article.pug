@@ -35,8 +35,8 @@ html(lang="en")
             // Display user name and image when authenticated
             li
               a(href="/")
-                img.nav-user-image(src=imgUrl, alt="User Image") 
-                span.nav-user-name= author
+                img.nav-user-image(src=user.imgUrl, alt="User Image") 
+                span.nav-user-name= user.userName
 
 
     main

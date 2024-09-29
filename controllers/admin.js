@@ -20,10 +20,14 @@ exports.getAddBlog = (req, res) => {
 }
 
 exports.getAdminDashboard = (req, res) => {
+	let errorMsg = req.flash('error');
+	if (errorMsg.length <= 0)
+		errorMsg = null;
 	Blogs.find({ userId: req.user._id }).populate('userId').then((blogs) => {
 		res.render('admin/admin-dashboard', {
 			blogs: blogs,
-			user: req.user
+			user: req.user,
+			errorMessage: errorMsg
 		});
 	}).catch((err) => {
 		console.log(err);
@@ -32,9 +36,15 @@ exports.getAdminDashboard = (req, res) => {
 
 exports.getEditBlog = (req, res, next) => {
 	const blogId = req.query.id;
-	Blogs.findById(blogId).then((blog) => {
+	console.log(req.query.id);
+	Blogs.find({ _id: blogId, userId: req.user._id }).then((blog) => {
+		console.log(blog);
+		if (blog.length <= 0) {
+			req.flash('error', 'You do not authorized to edit this blog !!');
+			return res.redirect('/admin/admin-dashboard');
+		}
 		res.render('admin/edit-article', {
-			blog: blog,
+			blog: blog[0],
 			user: req.user
 		})
 	}).catch((err) => {
@@ -61,7 +71,11 @@ exports.postEditBlog = (req, res) => {
 
 exports.deleteBlog = (req, res) => {
 	const blogId = req.body.blogId;
-	Blogs.findByIdAndDelete(blogId).then((blog) => {
+	Blogs.findByIdAndDelete({ _id: blogId, userId: req.user._id }).then((blog) => {
+		if (blog.length <= 0) {
+			req.flash('error', 'You do not authorized to edit this blog !!');
+			return res.redirect('/admin/admin-dashboard');
+		}
 		res.redirect('/');
 	}).catch((err) => {
 		console.log(err);
