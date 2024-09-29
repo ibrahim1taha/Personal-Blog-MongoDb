@@ -92,19 +92,14 @@ p {
 /* Author Image */
 .author-info {
 	display: flex;
-	/* Use flexbox for inline alignment */
 	align-items: center;
-	/* Aligns items vertically */
 }
 
 .author-image {
 	width: 30px;
-	/* Set a suitable size for the image */
 	height: 30px;
-	/* Set a suitable size for the image */
 	border-radius: 50%;
 	margin-right: 8px;
-	/* Space between the image and the text */
 }
 
 /* Forms */
@@ -165,12 +160,17 @@ form button {
 .article-page .container {
 	display: flex;
 	flex-direction: column;
-	align-items: center;
-	text-align: center;
+	align-items: flex-start;
+	/* Align items to the left */
+	text-align: left;
 }
 
 .article-page h1 {
 	margin-bottom: 20px;
+	font-size: 36px;
+	/* Bigger font size */
+	font-weight: bold;
+	/* Bold title */
 }
 
 .article-page .article-image {
@@ -182,6 +182,29 @@ form button {
 .article-page .meta,
 .article-page .content {
 	margin-bottom: 20px;
+}
+
+/* Author Info for Article Page */
+.article-page .author-info {
+	display: flex;
+	align-items: center;
+	margin-bottom: 20px;
+}
+
+.article-page .author-image {
+	width: 48px;
+	/* Increase image size */
+	height: 48px;
+	/* Increase image size */
+	border-radius: 50%;
+	margin-right: 12px;
+}
+
+.article-page .author-info span {
+	font-size: 18px;
+	/* Bigger font size for author name */
+	font-weight: bold;
+	/* Bold font for author name */
 }
 
 .user-message {
@@ -199,4 +222,20 @@ form button {
 	border-color: red;
 	background: rgb(255, 176, 176);
 	color: red;
+}
+
+
+.nav-user-image {
+	width: 34px;
+	height: 34px;
+	border-radius: 50%;
+	margin-right: 10px;
+	vertical-align: middle;
+}
+
+
+.nav-user-name {
+	font-weight: bold;
+	vertical-align: middle;
+	display: inline-block;
 }

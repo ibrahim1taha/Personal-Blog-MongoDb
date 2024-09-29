@@ -2,33 +2,61 @@ doctype html
 html(lang="en")
   head
     meta(charset="UTF-8")
-    meta(name="viewport" content="width=device-width, initial-scale=1.0")
+    meta(name="viewport", content="width=device-width, initial-scale=1.0")
     title Add New Article
     link(rel="stylesheet", href="/style.css")
 
   body
     nav
       .container
-        h1 
+        h1
           a(href="/") Ibrahim's Blog
         ul
-          li 
-            a(href="/") home
-          li 
-            a(href="add-blog") Add Blog
-          li 
-            a(href="admin-dashboard") Dashboard 
+          li
+            a(href="#") Home
+
+          // If the user is not authenticated, show Sign Up and Login links
+          if !isAuthenticated
+            li
+              a(href="/signup") Sign Up
+            li
+              a(href="/login") Login
+
+          // If the user is authenticated, show Logout option
+          if isAuthenticated
+            li
+              a(href="/admin/add-blog") Add Blog
+            li
+              a(href="/admin/admin-dashboard") Dashboard
+            li
+              form(action="/logout", method="POST")
+                button(type="submit") Logout
+
+            // Display user name and image when authenticated
+            li
+              a(href="/")
+                img.nav-user-image(src=imgUrl, alt="User Image") 
+                span.nav-user-name= author
+
 
     main
       .container
         form(action="/admin/add-blog", method="POST")
           label(for="title") Title
-          input(type="text", id="title", name="title", placeholder="Article Title")
+          input#title(type="text", name="title", placeholder="Article Title")
 
           label(for="imageUrl") Image URL
-          input(type="text", id="imageUrl", name="imageUrl", placeholder="Enter image URL")
-		  
+          input#imageUrl(
+            type="text",
+            name="imageUrl",
+            placeholder="Enter image URL"
+          )
+
           label(for="content") Content
-          textarea(id="content", name="content", rows=12, placeholder="Write your article here...")
+          textarea#content(
+            name="content",
+            rows=12,
+            placeholder="Write your article here..."
+          )
 
           button.btn(type="submit") Publish

@@ -49,6 +49,11 @@ app.use((req, res, next) => {
 	});
 })
 
+app.use((req, res, next) => {
+	res.locals.isAuthenticated = req.session.isLoggedIN;
+	next();
+})
+
 app.use('/', myBlogRoutes);
 app.use('/', authRoutes);
 app.use('/admin', adminRoutes);

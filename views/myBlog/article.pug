@@ -2,33 +2,48 @@ doctype html
 html(lang="en")
   head
     meta(charset="UTF-8")
-    meta(name="viewport" content="width=device-width, initial-scale=1.0")
-    title #{blog.title}
+    meta(name="viewport", content="width=device-width, initial-scale=1.0")
+    title #{ blog.title }
     link(rel="stylesheet", href="style.css")
 
   body
     nav
       .container
-        h1 
+        h1
           a(href="/") Ibrahim's Blog
         ul
-          li 
-            a(href="#") home
-          li 
-            a(href="admin/add-blog") Add Blog
-          li 
-            a(href="admin/admin-dashboard") Dashboard 
-          li 
-            a(href="/signup") Sign Up
-          li 
-            a(href="/login") Login 
+          li
+            a(href="#") Home
+
+          // If the user is not authenticated, show Sign Up and Login links
+          if !isAuthenticated
+            li
+              a(href="/signup") Sign Up
+            li
+              a(href="/login") Login
+
+          // If the user is authenticated, show Logout option
+          if isAuthenticated
+            li
+              a(href="/admin/add-blog") Add Blog
+            li
+              a(href="/admin/admin-dashboard") Dashboard
+            li
+              form(action="/logout", method="POST")
+                button(type="submit") Logout
+
+            // Display user name and image when authenticated
+            li
+              a(href="/")
+                img.nav-user-image(src=imgUrl, alt="User Image") 
+                span.nav-user-name= author
 
     article.article-page
       .container
-        h1 #{blog.title}
+        h1 #{ blog.title }
         .author-info
-          img(src=imgUrl, alt="Author Image", class="author-image")
-          span #{blog.userId.userName}
-        img(src=blog.imageUrl, alt="Article Image", class="article-image")
-        p Published on: #{blog.date}
-        p.content #{blog.description}
+          img.author-image(src=imgUrl, alt="Author Image")
+          span #{ author }
+        img.article-image(src=blog.imageUrl, alt="Article Image")
+        p Published on: #{ blog.date }
+        p.content #{ blog.description }

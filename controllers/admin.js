@@ -14,12 +14,17 @@ exports.addBlog = (req, res) => {
 }
 
 exports.getAddBlog = (req, res) => {
-	res.render('admin/add-edit-article');
+	res.render('admin/add-edit-article', {
+		user: req.user
+	});
 }
 
 exports.getAdminDashboard = (req, res) => {
-	Blogs.find().then((blogs) => {
-		res.render('admin/admin-dashboard', { blogs: blogs });
+	Blogs.find({ userId: req.user._id }).populate('userId').then((blogs) => {
+		res.render('admin/admin-dashboard', {
+			blogs: blogs,
+			user: req.user
+		});
 	}).catch((err) => {
 		console.log(err);
 	});
@@ -29,7 +34,8 @@ exports.getEditBlog = (req, res, next) => {
 	const blogId = req.query.id;
 	Blogs.findById(blogId).then((blog) => {
 		res.render('admin/edit-article', {
-			blog: blog
+			blog: blog,
+			user: req.user
 		})
 	}).catch((err) => {
 

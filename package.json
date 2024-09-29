@@ -16,8 +16,13 @@
 		"connect-mongodb-session": "^5.0.0",
 		"express": "^4.21.0",
 		"express-session": "^1.18.0",
+		"express-validator": "^7.2.0",
 		"mongoose": "^8.6.3",
 		"nodemon": "^3.1.5",
 		"pug": "^3.0.3"
+	},
+	"devDependencies": {
+		"@prettier/plugin-pug": "^3.1.0",
+		"prettier": "^3.3.3"
 	}
 }
