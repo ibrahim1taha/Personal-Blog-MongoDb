@@ -41,7 +41,7 @@ exports.getLogin = (req, res) => {
 	if (errorMsg.length <= 0)
 		errorMsg = null;
 	res.render('myBlog/login', {
-		errorMessage: errorMsg
+		errorMessage: errorMsg,
 	});
 }
 

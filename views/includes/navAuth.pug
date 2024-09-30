@@ -1,0 +1,25 @@
+body
+  nav
+    .container
+      h1
+        a(href="/") Ibrahim's Blog
+      ul
+        li
+          a(href="/") Home
+
+        // If the user is not authenticated, show Sign Up and Login links
+        if !isAuthenticated
+          li
+            a(href="/signup") Sign Up
+          li
+            a(href="/login") Login
+
+        // If the user is authenticated, show Logout option and user info
+        if isAuthenticated
+          li
+            a(href="/admin/add-blog") Add Blog
+          li
+            a(href="/admin/admin-dashboard") Dashboard
+          li
+            form(action="/logout", method="POST")
+              button(type="submit") Logout

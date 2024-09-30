@@ -7,34 +7,8 @@ html(lang="en")
     link(rel="stylesheet", href="style.css")
 
   body
-    nav
-      .container
-        h1
-          a(href="/") Ibrahim's Blog
-        ul
-          li
-            a(href="/") Home
-
-          // If the user is not authenticated, show Sign Up and Login links
-          if !isAuthenticated
-            li
-              a(href="/signup") Sign Up
-            li
-              a(href="/login") Login
-
-          // If the user is authenticated, show Logout option and user info
-          if isAuthenticated
-            li
-              a(href="/admin/add-blog") Add Blog
-            li
-              a(href="/admin/admin-dashboard") Dashboard
-            li
-              form(action="/logout", method="POST")
-                button(type="submit") Logout
-            li
-              a(href="/")
-                img.nav-user-image(src=user.imgUrl, alt="User Image") 
-                span.nav-user-name= user.userName
+    // Include the navigation bar
+    include ../includes/navbar.pug
 
     if errorMessage
       .user-message.user-message--error= errorMessage
