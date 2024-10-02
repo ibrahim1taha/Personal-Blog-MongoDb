@@ -30,12 +30,9 @@ A Personal Blog application built with Node.js, Express.js, and MongoDB. This pr
 
    ```bash
    git clone https://github.com/ibrahim1taha/Personal-Blog-MongoDb.git
-   ```bash
-      cd Personal-Blog-MongoDb
-   ```bash
-      npm install
-   ```bash
-      npm start
+cd Personal-Blog-MongoDb
+npm install
+npm start
 
 
 
