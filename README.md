@@ -30,9 +30,22 @@ A Personal Blog application built with Node.js, Express.js, and MongoDB. This pr
 
    ```bash
    git clone https://github.com/ibrahim1taha/Personal-Blog-MongoDb.git
-cd Personal-Blog-MongoDb
-npm install
-npm start
+2. Navigate to the project directory:
+
+   ```bash
+   cd Personal-Blog-MongoDb
+3. Install the dependencies:
+
+   ```bash
+   npm install
+4. Start the application:
+
+   ```bash
+   npm start
+
+
+
+
 
 
 
