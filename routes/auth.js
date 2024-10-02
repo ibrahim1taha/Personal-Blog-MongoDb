@@ -19,7 +19,8 @@ router.post('/signup', [
 			}
 		})
 	}),
-	body('password', 'Password must be at least 4 characters long and contain at least one letter and one number.!').isLength({ min: 4 }).matches(/^(?=.*[a-z])(?=.*[0-9]).*$/)
+	body('password', 'Password must be at least 4 characters long and contain at least one letter and one number.!')
+		.isLength({ min: 4 }).matches(/^(?=.*[a-z])(?=.*[0-9]).*$/)
 ], authController.postSignup);
 
 router.get('/login', authController.getLogin);

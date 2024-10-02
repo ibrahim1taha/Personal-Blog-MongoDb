@@ -21,7 +21,6 @@ exports.getArticle = (req, res) => {
 	const blogId = req.query.id;
 	Blogs.find({ _id: blogId }).populate('userId')
 		.then((blog) => {
-			console.log(blog);
 			if (!blog) {
 				return res.status(404).send('Article not found');
 			}

@@ -6,7 +6,11 @@ exports.getSignup = (req, res) => {
 	if (errorMsg.length <= 0)
 		errorMsg = null;
 	res.render('myBlog/signup', {
-		errorMessage: errorMsg
+		errorMessage: errorMsg,
+		userName: '',
+		imgUrl: '',
+		email: ''
+
 	});
 }
 
@@ -16,7 +20,10 @@ exports.postSignup = (req, res) => {
 	const error = validationResult(req);
 	if (!error.isEmpty()) {
 		return res.status(422).render('myBlog/signup', {
-			errorMessage: error.array({ onlyFirstError: true })[0].msg
+			errorMessage: error.array({ onlyFirstError: true })[0].msg,
+			userName: userName,
+			imgUrl: imgUrl,
+			email: email
 		})
 	}
 
@@ -42,6 +49,7 @@ exports.getLogin = (req, res) => {
 		errorMsg = null;
 	res.render('myBlog/login', {
 		errorMessage: errorMsg,
+		email: ''
 	});
 }
 
@@ -49,8 +57,10 @@ exports.postLogin = (req, res) => {
 	const { email, password } = req.body;
 	Users.findOne({ email: email }).then((user) => {
 		if (!user) {
-			req.flash('error', 'Email or password is incorrect');
-			return res.redirect('/login');
+			return res.status(422).render('myBlog/login', {
+				errorMessage: 'Email or password is incorrect',
+				email: email
+			})
 		}
 		bcrypt.compare(password, user.password).then(isCorrectPass => {
 			if (isCorrectPass) {
@@ -59,17 +69,22 @@ exports.postLogin = (req, res) => {
 				return req.session.save(err => {
 					if (err) {
 						console.log(err);
-						req.flash('error', 'Email or password is incorrect');
-						return res.redirect('/login');
+						return res.status(422).render('myBlog/login', {
+							errorMessage: 'Email or password is incorrect',
+							email: email
+						})
 					}
 					res.redirect('/');
 				})
 			}
-			req.flash('error', 'Email or password is incorrect');
-			res.redirect('/login');
+			return res.status(422).render('myBlog/login', {
+				errorMessage: 'Email or password is incorrect',
+				email: email
+			})
 		})
 	}).catch((err) => {
 		console.log(err);
+		res.redirect('/login');
 	});
 }
 
