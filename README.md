@@ -42,11 +42,3 @@ A Personal Blog application built with Node.js, Express.js, and MongoDB. This pr
 
    ```bash
    npm start
-
-
-
-
-
-
-
-
